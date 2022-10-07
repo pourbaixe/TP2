@@ -20,3 +20,4 @@ while boucle_jeu:
         print("Le chiffre est plus petit, réessayez")
     elif numero_joue < chiffre_choisit:
         print("Le chiffre est plus grand, réessayez")
+
