@@ -1,7 +1,7 @@
 """
 Évangéline Pourbaix
 Gr:402
-TP2- jeu de devinettes
+TP2- jeu des devinettes
 """
 from random import *
 
