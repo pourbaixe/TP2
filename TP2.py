@@ -1,33 +1,41 @@
 """
 Évangéline Pourbaix
 Gr:402
-TP2- jeu des devinettes
+TP2- Jeu des devinettes
 """
 from random import *
 
 boucle_jeu = True
 
-def borne_jeu():
-    global nb_minimum
-    global nb_maximal
+nb_essais = 1
 
-    nb_minimum = str(input("Choisissez le nombre minimal à deviner"))
-    nb_maximal = str(input("Choisissez le nombre maximal à devniner"))
+def borne():
+   global nb_minimum
+   global nb_maximum
+
+   nb_minimum = int(input("Choisissez le nombre minimal à deviner"))
+   nb_maximum = int(input("Choisissez le nombre maximal à deviner"))
 
 while boucle_jeu:
-    chiffre_choisit = randint(nb_minimum, nb_maximal)
+   borne()
+   chiffre_choisit = randint(nb_minimum, nb_maximum)
 
-    not_found = True
-    while not_found:
-        numero_joue = int(input("J'ai choisi un nombre entre 0 et 5. À vous de le deviner"))
-        if numero_joue == chiffre_choisit:
-            rejouer = str(input("C'est le bon numéro, voulez-vous rejouer (oui/non)?"))
-            if rejouer == "oui":
-                boucle_jeu = True
-            elif rejouer == "non":
-                boucle_jeu = False
-        if numero_joue > chiffre_choisit:
-            print("Le chiffre est plus petit, réessayez")
-        elif numero_joue < chiffre_choisit:
-            print("Le chiffre est plus grand, réessayez")
+   not_found = True
+   while not_found:
+       numero_joue = int(input(f"J'ai choisi un nombre entre {nb_minimum} et {nb_maximum}. À vous de le deviner"))
+       if numero_joue == chiffre_choisit:
+           rejouer = str(input(f"C'est le bon numéro, voulez-vous rejouer (oui/non)? Vous avez réussi en {nb_essais} essais"))
+           if rejouer == "oui":
+                not_found = True #changer de numéro
+           elif rejouer == "non":
+               not_found = False
+               print("Merci d'avoir joué")
+               boucle_jeu = False
+       if numero_joue > chiffre_choisit:
+           print("Le chiffre est plus petit, réessayez")
+           nb_essais += 1
+       elif numero_joue < chiffre_choisit:
+           print("Le chiffre est plus grand, réessayez")
+           nb_essais += 1
+
 
